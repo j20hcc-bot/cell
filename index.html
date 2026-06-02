@@ -406,7 +406,7 @@
             </div>
         </div>
 
-        <!-- [업그레이드] 최고관리자 전용 기도제목 등록 및 수정 모달 추가 -->
+        <!-- [업그레이드] 최고관리자 전용 기도제목 등록 및 수정 모달 -->
         <div id="prayer-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-6 hidden">
             <div class="bg-white rounded-2xl w-full max-w-sm p-6 space-y-4 shadow-xl">
                 <h3 id="prayer-modal-title" class="text-sm font-bold text-primary"><i class="fa-solid fa-hands-praying mr-1 text-accent"></i> 기도제목 등록</h3>
@@ -477,7 +477,7 @@
             
             invitees: [], // 모든 초대자 성함 초기화
             
-            prayers: [] // [요청 반영] 모든 중보기도 0으로 시작 및 완전 삭제
+            prayers: [] // 모든 중보기도 0으로 시작 및 완전 삭제
         };
 
         var bibleVerses = [
@@ -731,7 +731,7 @@
             renderInvitees();
         }
 
-        // 초대자 목록 렌더링 함수
+        // 초대자 목록 렌더링 함수 (따옴표 버그 완전 패치 완료)
         function renderInvitees() {
             try {
                 var container = document.getElementById('invitee-list');
@@ -753,13 +753,13 @@
                 }
 
                 if (!filtered || filtered.length === 0) {
-                    var filterMsg = appState.currentCellFilter === '전체' ? '작정 등록된 전체 초대자가 아직 없습니다.' : appState.currentCellFilter + '에 작정 등록된 초대자가 아직 없습니다.';
+                    var filterMsg = appState.currentCellFilter === '전체' ? '작정 등록된 초대자가 아직 없습니다.' : appState.currentCellFilter + '에 작정 등록된 초대자가 아직 없습니다.';
                     container.innerHTML = 
                         '<div class="text-center py-12 bg-white border border-borderWarm rounded-xl px-4">' +
                             '<i class="fa-solid fa-users-slash text-3xl text-borderWarm mb-3"></i>' +
                             '<p class="text-xs text-textMuted font-medium leading-relaxed">' +
                                 filterMsg + '<br>' +
-                                '<span class="text-accent font-semibold">우측 상단에서 [셀장 모드]를 켜고 첫 초대자를 작정해보세요!</span>' +
+                                '<span class="text-accent font-semibold">우측 상단에서 [셀장 모드]를 켜고 첫 초대자를 작정해 보세요!</span>' +
                             '</p>' +
                         '</div>';
                     return;
@@ -835,7 +835,7 @@
             }
         }
 
-        // 릴레이 중보기도 연동 렌더러 (최고 관리자 전용 수정 및 삭제 제어 기능 탑재)
+        // 릴레이 중보기도 연동 렌더러 (구문 오류 완전 패치 완료!)
         function renderPrayers() {
             try {
                 var container = document.getElementById('prayer-list');
@@ -889,7 +889,7 @@
                                 '</div>' +
                                 '<button onclick="commitPrayer(' + item.id + ')" class="bg-secondary hover:bg-primary text-white text-xs px-4 py-2 rounded-xl font-bold transition-all shadow-sm flex items-center gap-1.5">' +
                                     '<i class="fa-solid fa-hands-praying"></i> 기도했습니다' +
-                                </button>' +
+                                '</button>' +
                             '</div>' +
                             adminTools +
                         '</div>';
